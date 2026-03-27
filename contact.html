@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prodigy Sports Group</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- ===== SITE HEADER & NAVIGATION ===== -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="images/logo.png" alt="Prodigy Sports Group logo" class="logo-img" />
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">Who We Are</a></li>
+                <li><a href="athletes.html">Athletes</a></li>
+                <li><a href="Brands.html">Brands and Partnerships</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <h1>Contact Us</h1>
+            <p>Get in touch with our team</p>
+        </section>
+
+        <section class="contact-section">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>
+                       Are you the right fit?
+                        <br>We partner with athletes who:
+                        <ul>
+                           <li>Want to improve</li>
+                           <li>Value honest feedback</li> 
+                           <li>Are serious about long-term growth</li>
+                           <li>Want meaningful opportunities</li>
+                           <li>Who are ready to be challenged</li> 
+                         </ul>
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <h4>Email</h4>
+                            <a href="mailto:Client@prodigysportsgroup.io">Client@prodigysportsgroup.io</a>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Phone</h4>
+                            <a href="tel:+1234567890">(123) 456-7890</a>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Location</h4>
+                            <p>Louisville, KY
+                            <br>Washington D.C.
+                            <br>Charlotte NC
+                            <br>Dallas TX
+                            <br>Philadephia, PA</p>
+                        </div>
+                    </div>
+
+                    <div class="social-buttons">
+                        <a href="https://www.instagram.com/prodigysportsgroup_" target="_blank" class="social-btn instagram">Instagram</a>
+                        <a href="https://x.com/ProdigySG_" target="_blank" class="social-btn twitter">X</a>
+                        <!--<a href="https://linkedin.com/company/youragency" target="_blank" class="social-btn linkedin">LinkedIn</a>-->
+                        <a href="https://www.tiktok.com/@prodigysportsgroup" target="_blank" class="social-btn tiktok">Tiktok</a>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <h3>Send a Message</h3>
+
+                    <div id="form-success" class="form-success" style="display: none;">
+                        <h3>Thank You!</h3>
+                        <p>Your message has been sent. We'll get back to you within 24 hours.</p>
+                    </div>
+
+                    <form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST">
+                        <input type="text" name="_gotcha" style="display: none;">
+
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="Your Phone (optional)">
+                        </div>
+
+                        <div class="form-group">
+                            <select name="inquiry-type" required>
+                                <option value="" disabled selected>Select Inquiry Type</option>
+                                <option value="general">General Question</option>
+                                <option value="athlete">Athlete Representation</option>
+                                <option value="partnership">Partnership Opportunity</option>
+                                <option value="media">Media Inquiry</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="submit-btn">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-loading" style="display: none;">Sending...</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            Built for the new era of athletes
+            <br />
+            Your game. Your brand. Your future.
+        </p>
+        <p>&copy; 2026 Prodigy Sports Group Agency. All rights reserved.</p>
+
+
+    </footer>
+
+    <script src="JavaScript/script.js"></script>
+</body>
+</html>
