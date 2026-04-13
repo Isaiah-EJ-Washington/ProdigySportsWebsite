@@ -209,7 +209,7 @@ header.scrolled .logo-img {
             color: var(--color-gold);
         }
 
-/* Mobile menu button */
+/* Mobile menu button - hidden on desktop */
 .menu-toggle {
     display: none;
     background: none;
@@ -228,7 +228,7 @@ header.scrolled .logo-img {
         transition: all 0.3s ease;
     }
 
-/* Mobile responsive */
+/* Show hamburger on mobile */
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
@@ -247,21 +247,17 @@ header.scrolled .logo-img {
         justify-content: center;
         gap: 2rem;
         transition: right 0.3s ease;
-        z-index: 999;
+        z-index: 1000;
         padding: 2rem;
         margin: 0;
-        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+        list-style: none;
     }
 
         .nav-menu.active {
             right: 0;
         }
 
-        .nav-menu a {
-            font-size: 1.2rem;
-        }
-
-    /* Hamburger animation */
+    /* Hamburger animation when open */
     .menu-toggle.active span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
     }
@@ -1368,7 +1364,7 @@ header.scrolled .logo-img {
     letter-spacing: 0.3px;
 }
 
--.bg-light .stat-qualifier {
+.bg-light .stat-qualifier {
     color: var(--color-text-muted);
     opacity: 0.8;
 }
