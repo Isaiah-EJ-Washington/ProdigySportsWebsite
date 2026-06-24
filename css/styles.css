@@ -1,9 +1,7 @@
 ﻿
-
 /* ============================================
    1. GLOBAL VARIABLES & RESET
    ============================================ */
-
 :root {
     /* Colors */
     --color-bg-primary: #0D1F2D;
@@ -369,187 +367,400 @@ header.scrolled .logo-img {
     margin: 1.5rem auto;
 }
 
-/* Featured Athletes */
+/* ============================================
+   FEATURED ATHLETES 
+   ============================================ */
 
+/* Section Header */
+.featured-athletes {
+    padding: 80px 5% 100px;
+    background: var(--color-bg-primary);
+    overflow: visible !important;
+}
 
+.section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+    .section-header .section-tag {
+        display: inline-block;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--color-gold);
+        margin-bottom: 0.75rem;
+    }
+
+    .section-header h2 {
+        font-size: 3rem;
+        margin-bottom: 0.75rem;
+    }
+
+        .section-header h2 .gold-text {
+            color: var(--color-gold);
+        }
+
+.section-divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-gold), transparent);
+    margin: 0 auto;
+}
+
+/* Grid Container */
 .athletes-grid {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
     gap: 2rem !important;
     max-width: 1200px !important;
     margin: 0 auto !important;
+    overflow: visible !important;
 }
 
-.featured-athletes {
-    text-align: center;
-    padding: 100px 5%;
-}
-
-    .featured-athletes h2 {
-        text-align: center;
-        margin-bottom: 3rem;
-    }
-
-.athletes-grid-container {
-    display: block !important;
-}
-
-/* Card container */
+/* ===== FLIP CARD ===== */
 .flip-card {
     background-color: transparent;
     width: 100%;
     height: 420px;
     perspective: 1000px;
     cursor: pointer;
+    overflow: visible !important;
 }
 
-/* Card inner */
 .flip-card-inner {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.6s;
+    text-align: center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     transform-style: preserve-3d;
+    overflow: visible !important;
 }
 
-/* Flipped state */
 .flip-card.flipped .flip-card-inner {
     transform: rotateY(180deg);
 }
 
-/* Front and back shared */
-.flip-card-front, .flip-card-back {
+.flip-card-front,
+.flip-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    border-radius: 16px;
+    -webkit-backface-visibility: hidden;
+    border-radius: 20px;
     overflow: hidden;
 }
 
-/* FRONT CARD */
+/* ===== FRONT CARD ===== */
 .flip-card-front {
-    background: linear-gradient(145deg, #1e3042, #0a1520);
-    border: 1px solid rgba(201, 168, 76, 0.3);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 8px 20px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
-    transform: translateY(0);
-    transition: all 0.3s ease;
+    background: var(--color-bg-secondary);
+    border: 1px solid rgba(201, 168, 76, 0.15);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
     .flip-card-front:hover {
-        transform: translateY(-4px);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 15px 30px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(201, 168, 76, 0.2);
+        transform: translateY(-6px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(201, 168, 76, 0.05);
+        border-color: rgba(201, 168, 76, 0.3);
     }
 
-
-    .flip-card-front img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        box-shadow: inset 0 -20px 20px -10px rgba(0, 0, 0, 0.5);
-        position: relative;
-    }
-
-        .flip-card-front img::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 50px;
-            background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
-        }
-
-    .flip-card-front h3 {
-        margin: 1rem 0 0.25rem;
-        font-size: 1.2rem;
-        color: var(--color-text-primary);
-        font-weight: 700;
-    }
-
-    .flip-card-front p {
-        font-size: 0.9rem;
-        color: var(--color-gold) !important;
-        font-weight: 500;
-        letter-spacing: 0.3px;
-        margin-bottom: 0.5rem;
-    }
-
-.flip-hint {
-    font-size: 0.7rem;
-    color: var(--color-gold);
-    margin-top: 0.25rem;
-    opacity: 0.7;
+/* Card Image */
+.card-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
 }
 
-/* BACK CARD */
-.flip-card-back {
-    background: var(--color-gold);
-    color: var(--color-text-dark);
-    transform: rotateY(180deg);
-    padding: 1.5rem;
+    .card-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+.flip-card-front:hover .card-image-wrapper img {
+    transform: scale(1.05);
+}
+
+.card-image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70%;
+    background: linear-gradient(to top, rgba(13, 31, 45, 0.9), rgba(13, 31, 45, 0.4), transparent);
+    pointer-events: none;
+}
+
+/* Card Content */
+.card-content {
+    flex: 1;
+    padding: 1.25rem 1.5rem 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-    .flip-card-back h3 {
-        margin-bottom: 1rem;
+    .card-content h3 {
         font-size: 1.3rem;
-        color: var(--color-text-dark);
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+        color: var(--color-text-primary);
+        letter-spacing: -0.01em;
     }
 
+    .card-content p {
+        font-size: 0.85rem;
+        color: var(--color-gold) !important;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        margin-bottom: 0.5rem;
+        opacity: 0.9;
+    }
+
+.flip-hint {
+    font-size: 0.7rem;
+    color: var(--color-gold);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.flip-card-front:hover .flip-hint {
+    opacity: 1;
+    letter-spacing: 1px;
+}
+
+/* ===== BACK CARD ===== */
+.flip-card-back {
+    background: linear-gradient(145deg, var(--color-gold), #b8943a);
+    transform: rotateY(180deg);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.05);
+}
+
+.back-content {
+    width: 100%;
+}
+
+.flip-card-back h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+    border-bottom: 2px solid rgba(13, 31, 45, 0.15);
+    padding-bottom: 0.75rem;
+}
+
+/* Athlete Details */
 .athlete-details {
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(13, 31, 45, 0.06);
+}
+
+    .detail-row:last-child {
+        border-bottom: none;
+    }
+
+.detail-label {
+    font-weight: 600;
+    color: rgba(13, 31, 45, 0.7);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-value {
+    font-weight: 500;
+    color: var(--color-text-dark);
     font-size: 0.9rem;
 }
 
-    .athlete-details p {
-        margin: 0.5rem 0;
-        color: var(--color-text-dark);
-    }
-
-    .athlete-details span {
-        font-weight: 700;
-        display: inline-block;
-        width: 70px;
-    }
+.highlight-row .detail-value {
+    font-weight: 700;
+    color: var(--color-text-dark);
+}
 
 .flip-back-hint {
-    font-size: 0.7rem;
-    color: var(--color-text-dark);
-    opacity: 0.6;
-    margin-top: 1rem;
     display: block;
     text-align: center;
+    font-size: 0.7rem;
+    color: rgba(13, 31, 45, 0.5);
+    margin-top: 1.25rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(13, 31, 45, 0.15);
+    transition: opacity 0.3s ease;
 }
 
-
-.featured-athletes h2 {
-    text-align: center;
-    margin-bottom: 3rem;
+.flip-card-back:hover .flip-back-hint {
+    opacity: 0.8;
 }
 
-    .featured-athletes h2 .gold-text {
-        color: var(--color-gold);
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .athletes-grid {
+        gap: 1.5rem !important;
+    }
+}
+
+@media (max-width: 968px) {
+    .athletes-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem !important;
     }
 
-/* ===== MOBILE: FEATURED ATHLETES - 1 COLUMN ===== */
+    .section-header h2 {
+        font-size: 2.5rem;
+    }
+}
+
 @media (max-width: 768px) {
+    .featured-athletes {
+        padding: 60px 5% 80px;
+    }
+
     .athletes-grid {
         grid-template-columns: 1fr !important;
-        gap: 1.5rem;
-        max-width: 320px;
-        margin: 0 auto;
+        gap: 1.5rem !important;
+        max-width: 340px !important;
+        margin: 0 auto !important;
     }
 
     .flip-card {
         height: 380px;
-        width: 100%;
     }
 
-    .flip-card-front img {
+    .card-image-wrapper {
         height: 220px;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .flip-card-back {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .flip-card {
+        height: 360px;
+    }
+
+    .card-image-wrapper {
+        height: 200px;
+    }
+
+    .card-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .flip-card-back {
+        padding: 1.25rem;
+    }
+
+        .flip-card-back h3 {
+            font-size: 1.2rem;
+        }
+
+    .detail-label {
+        font-size: 0.7rem;
+    }
+
+    .detail-value {
+        font-size: 0.8rem;
+    }
+}
+/* ============================================
+   CAROUSEL - WORKING VERSION
+   ============================================ */
+
+.carousel-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 10px 0 30px 0;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 2rem;
+    width: max-content;
+    will-change: transform;
+    transform: translateX(0);
+}
+
+    /* Individual cards */
+    .carousel-track .flip-card {
+        flex: 0 0 280px;
+        width: 280px;
+        height: 400px;
+        perspective: 1000px;
+        cursor: pointer;
+    }
+
+/* ===== CAROUSEL NAVIGATION ===== */
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.carousel-btn {
+    background: rgba(201, 168, 76, 0.15);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    color: var(--color-gold);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+    .carousel-btn:hover {
+        background: var(--color-gold);
+        color: var(--color-text-dark);
+        transform: scale(1.05);
+    }
+
+    .carousel-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+
+@media (max-width: 768px) {
+    .carousel-track .flip-card {
+        flex: 0 0 220px;
+        width: 220px;
+        height: 350px;
+    }
+
+    .carousel-track {
+        gap: 1.5rem;
     }
 }
 
