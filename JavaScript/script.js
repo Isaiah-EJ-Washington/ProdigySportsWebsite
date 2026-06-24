@@ -1,5 +1,3 @@
-
-
 document.addEventListener('DOMContentLoaded', function () {
 
     // ============================================
@@ -7,16 +5,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // ============================================
     function initFlipCards() {
         document.querySelectorAll('.flip-card').forEach(card => {
-            // Remove any existing listeners to avoid duplicates
             card.removeEventListener('click', card._flipHandler);
-
-            // Create the handler
             const handler = function (e) {
                 if (e.target.closest('a, button')) return;
                 this.classList.toggle('flipped');
             };
-
-            // Store the handler so we can remove it later if needed
             card._flipHandler = handler;
             card.addEventListener('click', handler);
         });
@@ -24,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ============================================
-    // 2. CAROUSEL 
+    // 2. CAROUSEL - SMOOTHER & FASTER
     // ============================================
     function initCarousel() {
         const track = document.getElementById('carouselTrack');
@@ -122,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         ];
 
-        // Build Cards
+        // Build Cards (SINGLE definition)
         function buildCard(athlete) {
             return `
                 <div class="flip-card">
@@ -161,29 +154,33 @@ document.addEventListener('DOMContentLoaded', function () {
         const cardsHTML = athletes.map(a => buildCard(a)).join('');
         track.innerHTML = cardsHTML + cardsHTML;
 
-        // ===== CRITICAL: Initialize flip cards AFTER they are created =====
+        // Initialize flip cards after they are created
         initFlipCards();
 
-        // Carousel State
+        // --- Carousel State ---
         let currentIndex = 0;
         let autoPlayInterval = null;
         let isPaused = false;
         let isTransitioning = false;
         const totalCards = athletes.length;
         const cardWidth = 300;
+        const transitionDuration = 400;
+        const autoPlayDelay = 2800;
 
-        // Move to a specific index
+        // --- Move to a specific index ---
         function goTo(index, animate = true) {
             if (isTransitioning) return;
             isTransitioning = true;
 
             const offset = -(index * cardWidth);
-            track.style.transition = animate ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none';
+            track.style.transition = animate
+                ? `transform ${transitionDuration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94)`
+                : 'none';
             track.style.transform = `translateX(${offset}px)`;
 
             setTimeout(() => {
                 isTransitioning = false;
-            }, 550);
+            }, transitionDuration + 50);
 
             if (index >= totalCards) {
                 setTimeout(() => {
@@ -191,11 +188,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     track.style.transform = 'translateX(0px)';
                     currentIndex = 0;
                     void track.offsetHeight;
-                }, 600);
+                }, transitionDuration + 100);
             }
         }
 
-        // Next/Previous
+        // --- Next/Previous ---
         function next() {
             if (isTransitioning) return;
             currentIndex++;
@@ -224,29 +221,30 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // Auto-Play
+        // --- Auto-Play ---
         function startAutoPlay() {
             if (autoPlayInterval) clearInterval(autoPlayInterval);
             autoPlayInterval = setInterval(() => {
                 if (!isPaused) {
                     next();
                 }
-            }, 3000);
+            }, autoPlayDelay);
         }
 
         function togglePause() {
             isPaused = !isPaused;
-            const pauseBtn = document.getElementById('pauseBtn');
-            if (isPaused) {
-                pauseBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21" /></svg>`;
-                pauseBtn.setAttribute('aria-label', 'Resume');
-            } else {
-                pauseBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" /></svg>`;
-                pauseBtn.setAttribute('aria-label', 'Pause');
+            if (pauseBtn) {
+                if (isPaused) {
+                    pauseBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21" /></svg>`;
+                    pauseBtn.setAttribute('aria-label', 'Resume');
+                } else {
+                    pauseBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" /></svg>`;
+                    pauseBtn.setAttribute('aria-label', 'Pause');
+                }
             }
         }
 
-        // Event Listeners
+        // --- Event Listeners ---
         if (nextBtn) nextBtn.addEventListener('click', next);
         if (prevBtn) prevBtn.addEventListener('click', prev);
         if (pauseBtn) pauseBtn.addEventListener('click', togglePause);
@@ -258,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (e.key === ' ') { e.preventDefault(); togglePause(); }
         });
 
-        // Resize handling
+        // --- Resize handling ---
         let resizeTimeout;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
@@ -267,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 300);
         });
 
-        // Init
+        // --- Init ---
         goTo(0, false);
         startAutoPlay();
     }
@@ -482,9 +480,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // ============================================
     // 10. INIT ALL
     // ============================================
-    
     initFlipCards();
-    initCarousel(); 
+    initCarousel();
     initHorizontalScroll();
     initAccordion();
     initCountUp();
