@@ -2851,7 +2851,7 @@ body::before {
         font-size: 2.5rem;
     }
    /* ============================================
-   STATS TICKER - CLEAN VERSION
+   STATS TICKER - CLEAN WORKING VERSION
    ============================================ */
 
 .ticker-section {
@@ -2895,6 +2895,48 @@ body::before {
     align-items: center;
     gap: 40px;
     width: max-content;
+}
+
+.ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-family: var(--font-body);
+    white-space: nowrap;
+}
+
+.ticker-item .player-name {
+    color: var(--color-gold) !important;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.ticker-item .player-college {
+    color: var(--color-text-muted) !important;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.ticker-item .divider {
+    color: var(--color-gold) !important;
+    opacity: 0.3;
+    font-weight: 300;
+}
+
+.ticker-item .player-stats {
+    color: var(--color-text-primary) !important;
+    font-weight: 500;
+    background: rgba(201, 168, 76, 0.08);
+    padding: 2px 14px;
+    border-radius: 20px;
+    border-left: 2px solid var(--color-gold);
+    font-size: 13px;
+}
+
+/* Scrolling animation */
+.ticker-track {
     animation: scrollTicker 25s linear infinite;
 }
 
@@ -2907,75 +2949,30 @@ body::before {
     100% { transform: translateX(-50%); }
 }
 
-/* ===== TICKER ITEMS ===== */
-.ticker-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    font-family: var(--font-body);
-    white-space: nowrap;
-}
-
-.ticker-item .player-name {
-    color: var(--color-gold);
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 15px;
-}
-
-.ticker-item .player-college {
-    color: var(--color-text-muted);
-    font-weight: 400;
-    font-size: 13px;
-}
-
-.ticker-item .divider {
-    color: var(--color-gold);
-    opacity: 0.3;
-    font-weight: 300;
-}
-
-.ticker-item .player-stats {
-    color: var(--color-text-primary);
-    font-weight: 500;
-    background: rgba(201, 168, 76, 0.08);
-    padding: 2px 14px;
-    border-radius: 20px;
-    border-left: 2px solid var(--color-gold);
-    font-size: 13px;
-}
-
-/* ===== RESPONSIVE ===== */
+/* Responsive */
 @media (max-width: 768px) {
     .ticker-section {
         padding: 8px 0;
     }
-    
     .ticker-label {
         font-size: 10px;
         padding: 4px 12px;
         margin-right: 14px;
     }
-    
     .ticker-item {
         font-size: 12px;
         gap: 5px;
     }
-    
     .ticker-item .player-name {
         font-size: 13px;
     }
-    
     .ticker-item .player-college {
         font-size: 11px;
     }
-    
     .ticker-item .player-stats {
         font-size: 11px;
         padding: 1px 10px;
     }
-    
     .ticker-track {
         gap: 25px;
     }
@@ -2987,28 +2984,21 @@ body::before {
         padding: 3px 8px;
         margin-right: 10px;
     }
-    
     .ticker-item {
         font-size: 10px;
     }
-    
     .ticker-item .player-name {
         font-size: 11px;
     }
-    
     .ticker-item .player-college {
         font-size: 9px;
     }
-    
     .ticker-item .player-stats {
         font-size: 10px;
         padding: 1px 6px;
     }
-    
     .ticker-track {
         gap: 15px;
     }
 }
-}
-
 
