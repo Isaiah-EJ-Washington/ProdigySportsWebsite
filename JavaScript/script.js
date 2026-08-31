@@ -477,90 +477,52 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ============================================
-// STATS TICKER - GOOGLE SHEETS INTEGRATION
-// ============================================
-
-// Replace with your published Google Sheets CSV URL
-const SHEETS_URL = 'https://docs.google.com/spreadsheets/d/e/YOUR_SHEET_ID/pub?output=csv';
-
-async function loadTickerStats() {
+    // ===== STATS TICKER - GOOGLE SHEETS =====
+document.addEventListener('DOMContentLoaded', function() {
     const track = document.getElementById('tickerTrack');
-    if (!track) {
-        console.warn('Ticker track not found');
+    
+    // Replace with your Google Sheets CSV URL
+    const SHEETS_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRroEc8ZesUQGB8CbY_C8MafEFB8CQ-SScGX4CFzO1bkPDOwmq3AUBPBsZtb8LqZUeHpGUgY81zM66w/pub?output=csv';
+    
+    // First, check if the URL is set
+    if (SHEETS_URL.includes('YOUR_SHEET_ID')) {
+        console.log('Please replace YOUR_SHEET_ID with your actual Google Sheets ID');
         return;
     }
-
-    try {
-        const response = await fetch(SHEETS_URL);
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const csvText = await response.text();
-        const rows = csvText.split('\n').filter(row => row.trim() !== '');
-        
-        if (rows.length < 2) {
-            throw new Error('No data found in spreadsheet');
-        }
-        
-        // Parse headers
-        const headers = rows[0].split(',').map(h => h.trim());
-        
-        // Build HTML
-        let html = '';
-        let playerCount = 0;
-        
-        for (let i = 1; i < rows.length; i++) {
-            const values = rows[i].split(',').map(v => v.trim());
+    
+    fetch(SHEETS_URL)
+        .then(response => response.text())
+        .then(csv => {
+            const rows = csv.split('\n').filter(row => row.trim() !== '');
+            const headers = rows[0].split(',').map(h => h.trim());
+            let html = '';
             
-            // Skip empty rows
-            if (values.length < 3 || values.every(v => v === '')) continue;
+            for (let i = 1; i < rows.length; i++) {
+                const values = rows[i].split(',').map(v => v.trim());
+                if (values.length < 3) continue;
+                
+                const name = values[0] || 'Player';
+                const college = values[1] || '';
+                const stats = values[2] || 'N/A';
+                
+                html += `
+                    <span class="ticker-item">
+                        <span class="player-name">${name}</span>
+                        ${college ? `<span class="player-college">${college}</span>` : ''}
+                        <span class="divider">|</span>
+                        <span class="player-stats">${stats}</span>
+                    </span>
+                `;
+            }
             
-            const player = {};
-            headers.forEach((header, index) => {
-                player[header] = values[index] || '';
-            });
-            
-            // Only show active players (if "Active" column exists)
-            if (player.Active && player.Active.toLowerCase() === 'false') continue;
-            
-            html += `
-                <span class="ticker-item">
-                    <span class="player-name">${player.Name || 'Player'}</span>
-                    <span class="player-college">${player.College || player.Team || ''}</span>
-                    <span class="divider">|</span>
-                    <span class="player-stats">${player.Stats || 'N/A'}</span>
-                </span>
-            `;
-            
-            playerCount++;
-        }
-        
-        if (html && playerCount > 0) {
-            // Duplicate for seamless scrolling
-            track.innerHTML = html + html;
-            console.log(`Ticker loaded with ${playerCount} players`);
-        } else {
-            throw new Error('No players found in spreadsheet');
-        }
-        
-    } catch (error) {
-        console.error('Ticker error:', error);
-        // Show fallback message
-        track.innerHTML = `
-            <span class="ticker-item">
-                <span class="player-name">Loading stats...</span>
-                <span class="player-college">Please check console for errors</span>
-            </span>
-        `;
-    }
-}
-
-// Load ticker when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-    loadTickerStats();
+            if (html) {
+                track.innerHTML = html + html;
+            }
+        })
+        .catch(error => {
+            console.error('Error loading stats:', error);
+            track.innerHTML = `<span class="ticker-item">Error loading stats</span>`;
+        });
 });
 
     // ============================================
