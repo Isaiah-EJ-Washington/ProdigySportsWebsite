@@ -293,6 +293,12 @@ header.scrolled .logo-img {
     z-index: 0;
 }
 
+.hero-video-desktop {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Forces video to fill without distortion */
+}
+
 .hero-gradient-overlay {
     position: absolute;
     top: 0;
