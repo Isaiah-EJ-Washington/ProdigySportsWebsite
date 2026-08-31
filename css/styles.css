@@ -2823,74 +2823,34 @@ body::before {
     font-size: 13px;
 }
 
-/* ===== VIDEO PREVIEW ICON ===== */
-.video-preview {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 22px;
-    height: 22px;
-    background: rgba(201, 168, 76, 0.15);
-    border: 1px solid rgba(201, 168, 76, 0.3);
-    border-radius: 50%;
-    color: var(--color-gold);
-    font-size: 9px;
-    margin-left: 4px;
-    transition: all 0.3s ease;
-    font-weight: 700;
+/* ===== PLAYER LINK IN TICKER ===== */
+
+.player-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    transition: opacity 0.2s ease;
+}
+
+.player-link .player-name {
+    color: var(--color-gold) !important;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
     cursor: pointer;
-    position: relative;
-    z-index: 5;
+    transition: color 0.2s ease;
 }
 
-.video-trigger:hover .video-preview {
-    background: var(--color-gold);
-    color: var(--color-text-dark);
-    transform: scale(1.15);
-    box-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
+
+.player-link:hover .player-name {
+    color: #e6c86e !important; /* Slightly lighter gold on hover */
+    text-decoration: underline;
+    text-decoration-color: var(--color-gold);
+    text-underline-offset: 2px;
 }
 
-/* ===== VIDEO TOOLTIP ===== */
-.video-trigger {
-    position: relative;
-    cursor: default;
-}
-
-.video-trigger .video-tooltip {
-    display: none;
-    position: absolute;
-    bottom: calc(100% + 10px);
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--color-bg-secondary);
-    border: 1px solid var(--color-gold);
-    border-radius: 8px;
-    padding: 6px 14px;
-    white-space: nowrap;
-    color: var(--color-text-primary);
-    font-size: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-    z-index: 100;
-    pointer-events: none;
-    font-family: var(--font-body);
-    letter-spacing: 0.3px;
-}
-
-/* Small arrow on tooltip */
-.video-trigger .video-tooltip::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 6px solid transparent;
-    border-top-color: var(--color-gold);
-    pointer-events: none;
-}
-
-/* Show tooltip on hover */
-.video-trigger:hover .video-tooltip {
-    display: block;
+.player-link:hover::after {
+    opacity: 1;
 }
 
 /* ===== RESPONSIVE ===== */
