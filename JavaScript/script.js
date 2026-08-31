@@ -478,6 +478,92 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ============================================
+// STATS TICKER - GOOGLE SHEETS INTEGRATION
+// ============================================
+
+// Replace with your published Google Sheets CSV URL
+const SHEETS_URL = 'https://docs.google.com/spreadsheets/d/e/YOUR_SHEET_ID/pub?output=csv';
+
+async function loadTickerStats() {
+    const track = document.getElementById('tickerTrack');
+    if (!track) {
+        console.warn('Ticker track not found');
+        return;
+    }
+
+    try {
+        const response = await fetch(SHEETS_URL);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const csvText = await response.text();
+        const rows = csvText.split('\n').filter(row => row.trim() !== '');
+        
+        if (rows.length < 2) {
+            throw new Error('No data found in spreadsheet');
+        }
+        
+        // Parse headers
+        const headers = rows[0].split(',').map(h => h.trim());
+        
+        // Build HTML
+        let html = '';
+        let playerCount = 0;
+        
+        for (let i = 1; i < rows.length; i++) {
+            const values = rows[i].split(',').map(v => v.trim());
+            
+            // Skip empty rows
+            if (values.length < 3 || values.every(v => v === '')) continue;
+            
+            const player = {};
+            headers.forEach((header, index) => {
+                player[header] = values[index] || '';
+            });
+            
+            // Only show active players (if "Active" column exists)
+            if (player.Active && player.Active.toLowerCase() === 'false') continue;
+            
+            html += `
+                <span class="ticker-item">
+                    <span class="player-name">${player.Name || 'Player'}</span>
+                    <span class="player-college">${player.College || player.Team || ''}</span>
+                    <span class="divider">|</span>
+                    <span class="player-stats">${player.Stats || 'N/A'}</span>
+                </span>
+            `;
+            
+            playerCount++;
+        }
+        
+        if (html && playerCount > 0) {
+            // Duplicate for seamless scrolling
+            track.innerHTML = html + html;
+            console.log(`Ticker loaded with ${playerCount} players`);
+        } else {
+            throw new Error('No players found in spreadsheet');
+        }
+        
+    } catch (error) {
+        console.error('Ticker error:', error);
+        // Show fallback message
+        track.innerHTML = `
+            <span class="ticker-item">
+                <span class="player-name">Loading stats...</span>
+                <span class="player-college">Please check console for errors</span>
+            </span>
+        `;
+    }
+}
+
+// Load ticker when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    loadTickerStats();
+});
+
+    // ============================================
     // 10. INIT ALL
     // ============================================
     initFlipCards();
