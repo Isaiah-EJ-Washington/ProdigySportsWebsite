@@ -2727,130 +2727,6 @@ body::before {
 }
 
 /* ============================================
-   13. RESPONSIVE / MEDIA QUERIES
-   ============================================ */
-
-@media (max-width: 968px) {
-    .framework-grid,
-    .athletes-grid,
-    .team-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .image-led-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .service-container {
-        flex-direction: column;
-    }
-
-    .service-hero-content h2 {
-        font-size: 2.5rem;
-    }
-
-    .process-steps {
-        gap: 2rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .framework-grid,
-    .athletes-grid,
-    .team-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-left-container {
-        padding: 120px 5%;
-    }
-
-    .headline-line1,
-    .headline-line2 {
-        font-size: 42px;
-    }
-
-    .hero-supporting {
-        font-size: 17px;
-    }
-
-    .bold-statement h2 {
-        font-size: 32px;
-    }
-
-    .bold-statement .statement-subhead {
-        font-size: 18px;
-    }
-
-    .service-hero-content {
-        padding: 60px 5% !important;
-        text-align: left !important;
-        max-width: 100%;
-    }
-
-    .service-hero.right .service-hero-content {
-        text-align: left !important;
-    }
-
-    .service-hero {
-        min-height: 60vh;
-    }
-
-    .stats-grid {
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .nav-menu {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 70px);
-        background: var(--color-bg-primary);
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 2rem;
-        transition: left 0.3s;
-    }
-
-        .nav-menu.active {
-            left: 0;
-        }
-
-    .quick-contact-form {
-        flex-direction: column;
-    }
-
-    .better-banner h2 {
-        font-size: 2rem;
-    }
-
-    .better-banner-list {
-        gap: 0.75rem;
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .service-image img {
-        height: 200px;
-    }
-
-    .service-hero-content h2 {
-        font-size: 2rem;
-    }
-
-    .stat-number {
-        font-size: 2.5rem;
-    }
-   /* ============================================
    STATS TICKER - CLEAN WORKING VERSION
    ============================================ */
 
@@ -3002,3 +2878,128 @@ body::before {
     }
 }
 
+/* ============================================
+   13. RESPONSIVE / MEDIA QUERIES
+   ============================================ */
+
+@media (max-width: 968px) {
+    .framework-grid,
+    .athletes-grid,
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .image-led-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .service-container {
+        flex-direction: column;
+    }
+
+    .service-hero-content h2 {
+        font-size: 2.5rem;
+    }
+
+    .process-steps {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .framework-grid,
+    .athletes-grid,
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-left-container {
+        padding: 120px 5%;
+    }
+
+    .headline-line1,
+    .headline-line2 {
+        font-size: 42px;
+    }
+
+    .hero-supporting {
+        font-size: 17px;
+    }
+
+    .bold-statement h2 {
+        font-size: 32px;
+    }
+
+    .bold-statement .statement-subhead {
+        font-size: 18px;
+    }
+
+    .service-hero-content {
+        padding: 60px 5% !important;
+        text-align: left !important;
+        max-width: 100%;
+    }
+
+    .service-hero.right .service-hero-content {
+        text-align: left !important;
+    }
+
+    .service-hero {
+        min-height: 60vh;
+    }
+
+    .stats-grid {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: var(--color-bg-primary);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transition: left 0.3s;
+    }
+
+        .nav-menu.active {
+            left: 0;
+        }
+
+    .quick-contact-form {
+        flex-direction: column;
+    }
+
+    .better-banner h2 {
+        font-size: 2rem;
+    }
+
+    .better-banner-list {
+        gap: 0.75rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-image img {
+        height: 200px;
+    }
+
+    .service-hero-content h2 {
+        font-size: 2rem;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+    }
+   
