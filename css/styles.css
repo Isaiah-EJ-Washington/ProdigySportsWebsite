@@ -2850,4 +2850,200 @@ body::before {
     .stat-number {
         font-size: 2.5rem;
     }
+   /* ============================================
+   STATS TICKER - ABOVE FEATURED ATHLETES
+   ============================================ */
+
+.ticker-section {
+    background: var(--color-bg-secondary);
+    border-top: 2px solid var(--color-gold);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 14px 0;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.ticker-container {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+/* ===== TICKER LABEL ===== */
+.ticker-label {
+    flex-shrink: 0;
+    background: var(--color-gold);
+    color: var(--color-text-dark);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    padding: 6px 18px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    margin-right: 24px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ticker-label span {
+    font-size: 14px;
+}
+
+/* ===== TICKER TRACK ===== */
+.ticker-track-wrapper {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Gradient fade on right edge for smooth scroll effect */
+.ticker-track-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 100%;
+    background: linear-gradient(to right, transparent, var(--color-bg-secondary));
+    pointer-events: none;
+    z-index: 2;
+}
+
+.ticker-track {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    animation: scrollTicker 20s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+    will-change: transform;
+}
+
+/* ===== TICKER ITEMS ===== */
+.ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-family: var(--font-body);
+    letter-spacing: 0.3px;
+}
+
+.ticker-item .player-name {
+    color: var(--color-gold);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.ticker-item .player-college {
+    color: var(--color-text-muted);
+    font-weight: 400;
+}
+
+.ticker-item .player-stats {
+    color: var(--color-text-primary);
+    font-weight: 500;
+    background: rgba(201, 168, 76, 0.1);
+    padding: 2px 12px;
+    border-radius: 20px;
+    border-left: 2px solid rgba(201, 168, 76, 0.3);
+}
+
+/* Divider between players */
+.ticker-item .divider {
+    color: var(--color-gold);
+    opacity: 0.3;
+    margin-left: 4px;
+}
+
+/* ===== SCROLL ANIMATION ===== */
+@keyframes scrollTicker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Pause on hover */
+.ticker-section:hover .ticker-track {
+    animation-play-state: paused;
+}
+
+/* Pause on focus (accessibility) */
+.ticker-section:focus-within .ticker-track {
+    animation-play-state: paused;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .ticker-section {
+        padding: 10px 0;
+    }
+    
+    .ticker-label {
+        font-size: 10px;
+        padding: 4px 12px;
+        margin-right: 14px;
+    }
+    
+    .ticker-label span {
+        font-size: 12px;
+    }
+    
+    .ticker-item {
+        font-size: 12px;
+        gap: 6px;
+    }
+    
+    .ticker-item .player-name {
+        font-size: 13px;
+    }
+    
+    .ticker-item .player-stats {
+        font-size: 11px;
+        padding: 2px 8px;
+    }
+    
+    .ticker-track {
+        gap: 30px;
+    }
+    
+    .ticker-track-wrapper::after {
+        width: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ticker-label {
+        font-size: 8px;
+        padding: 3px 8px;
+        margin-right: 10px;
+    }
+    
+    .ticker-label span {
+        font-size: 10px;
+    }
+    
+    .ticker-item {
+        font-size: 10px;
+        gap: 4px;
+    }
+    
+    .ticker-item .player-name {
+        font-size: 11px;
+    }
+    
+    .ticker-item .player-stats {
+        font-size: 10px;
+        padding: 1px 6px;
+    }
+    
+    .ticker-track {
+        gap: 20px;
+    }
+}
 }
