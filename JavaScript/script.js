@@ -526,6 +526,24 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
     // ============================================
+// VIDEO TOOLTIP - CLICK TO OPEN
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const videoTriggers = document.querySelectorAll('.video-trigger');
+    
+    videoTriggers.forEach(trigger => {
+        trigger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const videoUrl = this.getAttribute('data-video');
+            if (videoUrl && videoUrl !== '') {
+                window.open(videoUrl, '_blank');
+            }
+        });
+    });
+});
+
+    // ============================================
     // 10. INIT ALL
     // ============================================
     initFlipCards();
