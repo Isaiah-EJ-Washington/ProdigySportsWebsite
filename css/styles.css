@@ -2850,8 +2850,8 @@ body::before {
     .stat-number {
         font-size: 2.5rem;
     }
-/* ============================================
-   STATS TICKER 
+   /* ============================================
+   STATS TICKER - CLEAN VERSION
    ============================================ */
 
 .ticker-section {
@@ -2871,7 +2871,6 @@ body::before {
     padding: 0 5%;
 }
 
-/* ===== TICKER LABEL ===== */
 .ticker-label {
     flex-shrink: 0;
     background: var(--color-gold);
@@ -2886,7 +2885,6 @@ body::before {
     margin-right: 24px;
 }
 
-/* ===== TICKER TRACK ===== */
 .ticker-track-wrapper {
     flex: 1;
     overflow: hidden;
@@ -2900,7 +2898,6 @@ body::before {
     animation: scrollTicker 25s linear infinite;
 }
 
-/* Pause on hover */
 .ticker-section:hover .ticker-track {
     animation-play-state: paused;
 }
@@ -2910,16 +2907,16 @@ body::before {
     100% { transform: translateX(-50%); }
 }
 
-/* ===== TICKER ITEMS - COLOR CODED ===== */
+/* ===== TICKER ITEMS ===== */
 .ticker-item {
     display: flex;
     align-items: center;
     gap: 8px;
     font-size: 14px;
     font-family: var(--font-body);
+    white-space: nowrap;
 }
 
-/* Player Name - GOLD */
 .ticker-item .player-name {
     color: var(--color-gold);
     font-family: var(--font-display);
@@ -2927,21 +2924,18 @@ body::before {
     font-size: 15px;
 }
 
-/* College/Team - MUTED GRAY */
 .ticker-item .player-college {
     color: var(--color-text-muted);
     font-weight: 400;
     font-size: 13px;
 }
 
-/* Divider - FAINT GOLD */
 .ticker-item .divider {
     color: var(--color-gold);
     opacity: 0.3;
     font-weight: 300;
 }
 
-/* Stats - WHITE WITH GOLD BORDER */
 .ticker-item .player-stats {
     color: var(--color-text-primary);
     font-weight: 500;
@@ -3015,5 +3009,5 @@ body::before {
         gap: 15px;
     }
 }
-}
+
 }
