@@ -130,6 +130,7 @@ header {
     border-bottom: 1px solid var(--color-border);
     padding: 1rem 5%;
     transition: all 0.3s ease;
+    margin-top: 45px; 
 }
 
     /* This makes the navbar solid when scrolling */
@@ -2727,15 +2728,16 @@ body::before {
 }
 
 /* ============================================
-   STATS TICKER 
+   STATS TICKER - ABOVE HEADER
    ============================================ */
 
-
 .ticker-section {
+    position: sticky;
+    top: 0;
+    z-index: 1001; 
     background: var(--color-bg-secondary);
-    border-top: 2px solid var(--color-gold);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 12px 0;
+    border-bottom: 2px solid var(--color-gold);
+    padding: 8px 0;
     width: 100%;
     overflow: hidden;
 }
@@ -2743,7 +2745,7 @@ body::before {
 .ticker-container {
     display: flex;
     align-items: center;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 5%;
 }
@@ -2754,12 +2756,12 @@ body::before {
     color: var(--color-text-dark);
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 1.5px;
-    padding: 6px 18px;
+    padding: 4px 16px;
     border-radius: 4px;
     text-transform: uppercase;
-    margin-right: 24px;
+    margin-right: 20px;
 }
 
 .ticker-track-wrapper {
@@ -2780,8 +2782,13 @@ body::before {
 }
 
 @keyframes scrollTicker {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 /* ===== TICKER ITEMS ===== */
@@ -2789,134 +2796,150 @@ body::before {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 14px;
+    font-size: 13px;
     font-family: var(--font-body);
     white-space: nowrap;
 }
 
-.ticker-item .player-name {
-    color: var(--color-gold) !important;
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 15px;
-}
+    .ticker-item .player-name {
+        color: var(--color-gold);
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 14px;
+    }
 
-.ticker-item .player-college {
-    color: var(--color-text-muted) !important;
-    font-weight: 400;
-    font-size: 13px;
-}
+    .ticker-item .player-college {
+        color: var(--color-text-muted);
+        font-weight: 400;
+        font-size: 12px;
+    }
 
-.ticker-item .divider {
-    color: var(--color-gold) !important;
-    opacity: 0.3;
-    font-weight: 300;
-}
+    .ticker-item .divider {
+        color: var(--color-gold);
+        opacity: 0.3;
+        font-weight: 300;
+    }
 
-.ticker-item .player-stats {
-    color: var(--color-text-primary) !important;
-    font-weight: 500;
-    background: rgba(201, 168, 76, 0.08);
-    padding: 2px 14px;
-    border-radius: 20px;
-    border-left: 2px solid var(--color-gold);
-    font-size: 13px;
-}
+    .ticker-item .player-stats {
+        color: var(--color-text-primary);
+        font-weight: 500;
+        background: rgba(201, 168, 76, 0.08);
+        padding: 2px 12px;
+        border-radius: 20px;
+        border-left: 2px solid var(--color-gold);
+        font-size: 12px;
+    }
 
-/* ===== PLAYER LINK IN TICKER ===== */
-
+/* ===== VIDEO LINK & INDICATOR ===== */
 .player-link {
     text-decoration: none;
     color: inherit;
     display: inline-block;
+}
+
+    .player-link .player-name {
+        color: var(--color-gold) !important;
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+
+    .player-link:hover .player-name {
+        color: #e6c86e !important;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+
+.video-indicator {
+    display: none;
+    font-size: 9px;
+    color: var(--color-gold);
+    opacity: 0.6;
+    margin-left: 2px;
+}
+
+.ticker-item[data-has-video="true"] .video-indicator {
+    display: inline-block;
+}
+
+.video-tooltip {
+    display: none;
+    font-size: 10px;
+    color: var(--color-text-muted);
+    background: var(--color-bg-primary);
+    padding: 2px 8px;
+    border-radius: 12px;
+    border: 1px solid var(--color-gold);
+    margin-left: 2px;
+    white-space: nowrap;
     transition: opacity 0.2s ease;
 }
 
-.player-link .player-name {
-    color: var(--color-gold) !important;
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 15px;
-    cursor: pointer;
-    transition: color 0.2s ease;
-}
-
-
-.player-link:hover .player-name {
-    color: #e6c86e !important; /* Slightly lighter gold on hover */
-    text-decoration: underline;
-    text-decoration-color: var(--color-gold);
-    text-underline-offset: 2px;
-}
-
-.player-link:hover::after {
-    opacity: 1;
+.ticker-item[data-has-video="true"]:hover .video-tooltip {
+    display: inline-block;
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .ticker-section {
-        padding: 8px 0;
+        padding: 6px 0;
     }
+
     .ticker-label {
-        font-size: 10px;
-        padding: 4px 12px;
-        margin-right: 14px;
+        font-size: 9px;
+        padding: 3px 10px;
+        margin-right: 12px;
     }
+
     .ticker-item {
-        font-size: 12px;
+        font-size: 11px;
         gap: 5px;
     }
-    .ticker-item .player-name {
-        font-size: 13px;
-    }
-    .ticker-item .player-college {
-        font-size: 11px;
-    }
-    .ticker-item .player-stats {
-        font-size: 11px;
-        padding: 1px 10px;
-    }
+
+        .ticker-item .player-name {
+            font-size: 12px;
+        }
+
+        .ticker-item .player-college {
+            font-size: 10px;
+        }
+
+        .ticker-item .player-stats {
+            font-size: 10px;
+            padding: 1px 8px;
+        }
+
     .ticker-track {
-        gap: 25px;
-    }
-    .video-preview {
-        width: 18px;
-        height: 18px;
-        font-size: 7px;
-    }
-    .video-trigger .video-tooltip {
-        font-size: 10px;
-        padding: 4px 10px;
+        gap: 20px;
     }
 }
 
 @media (max-width: 480px) {
     .ticker-label {
         font-size: 8px;
-        padding: 3px 8px;
-        margin-right: 10px;
+        padding: 2px 6px;
+        margin-right: 8px;
     }
+
     .ticker-item {
         font-size: 10px;
+        gap: 3px;
     }
-    .ticker-item .player-name {
-        font-size: 11px;
-    }
-    .ticker-item .player-college {
-        font-size: 9px;
-    }
-    .ticker-item .player-stats {
-        font-size: 10px;
-        padding: 1px 6px;
-    }
+
+        .ticker-item .player-name {
+            font-size: 10px;
+        }
+
+        .ticker-item .player-college {
+            font-size: 9px;
+        }
+
+        .ticker-item .player-stats {
+            font-size: 9px;
+            padding: 1px 4px;
+        }
+
     .ticker-track {
-        gap: 15px;
-    }
-    .video-preview {
-        width: 16px;
-        height: 16px;
-        font-size: 6px;
+        gap: 12px;
     }
 }
 
