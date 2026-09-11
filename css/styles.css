@@ -2845,7 +2845,7 @@ body::before {
     background: var(--color-gold);
     color: var(--color-text-dark);
     transform: scale(1.15);
-   cursor: pointer   
+    cursor: pointer;   
 }
 
 .play-icon {
