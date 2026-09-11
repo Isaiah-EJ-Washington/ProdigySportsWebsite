@@ -2869,6 +2869,20 @@ body::before {
     transform: scale(1.15);
 }
 
+.ticker-item.video-trigger {
+    cursor: pointer;
+    position: relative;
+    z-index: 5;
+}
+
+.ticker-item.video-trigger * {
+    pointer-events: none; /* Makes the whole trigger clickable, not just individual spans */
+}
+
+.ticker-item.video-trigger {
+    pointer-events: auto;
+}
+
 .video-modal.active {
     display: flex;
 }
