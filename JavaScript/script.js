@@ -477,111 +477,75 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ===== STATS TICKER - GOOGLE SHEETS =====
-document.addEventListener('DOMContentLoaded', function() {
-    const track = document.getElementById('tickerTrack');
-    
-    // Replace with your Google Sheets CSV URL
-    const SHEETS_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRroEc8ZesUQGB8CbY_C8MafEFB8CQ-SScGX4CFzO1bkPDOwmq3AUBPBsZtb8LqZUeHpGUgY81zM66w/pub?output=csv';
-    
-    // First, check if the URL is set
-    if (SHEETS_URL.includes('YOUR_SHEET_ID')) {
-        console.log('Please replace YOUR_SHEET_ID with your actual Google Sheets ID');
-        return;
-    }
-    
-    fetch(SHEETS_URL)
-        .then(response => response.text())
-        .then(csv => {
-            const rows = csv.split('\n').filter(row => row.trim() !== '');
-            const headers = rows[0].split(',').map(h => h.trim());
-            let html = '';
-            
-            for (let i = 1; i < rows.length; i++) {
-                const values = rows[i].split(',').map(v => v.trim());
-                if (values.length < 3) continue;
-                
-                const name = values[0] || 'Player';
-                const college = values[1] || '';
-                const stats = values[2] || 'N/A';
-                
-                html += `
-                    <span class="ticker-item">
-                        <span class="player-name">${name}</span>
-                        ${college ? `<span class="player-college">${college}</span>` : ''}
-                        <span class="divider">|</span>
-                        <span class="player-stats">${stats}</span>
-                    </span>
-                `;
-            }
-            
-            if (html) {
-                track.innerHTML = html + html;
-            }
-        })
-        .catch(error => {
-            console.error('Error loading stats:', error);
-            track.innerHTML = `<span class="ticker-item">Error loading stats</span>`;
-        });
-});
 
     // ============================================
-// VIDEO MODAL - PLAY LOCAL VIDEOS ON CLICK
+// VIDEO MODAL - WORKING VERSION
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
     const videoModal = document.getElementById('video-modal');
     const modalVideo = document.getElementById('modal-video');
-    const modalOverlay = videoModal?.querySelector('.video-modal-overlay');
-    const modalClose = videoModal?.querySelector('.video-modal-close');
+    const modalOverlay = videoModal ? videoModal.querySelector('.video-modal-overlay') : null;
+    const modalClose = videoModal ? videoModal.querySelector('.video-modal-close') : null;
     const videoTriggers = document.querySelectorAll('.video-trigger');
 
-    if (!videoModal || !modalVideo) return;
+    if (!videoModal || !modalVideo) {
+        console.warn('Video modal or video element not found');
+        return;
+    }
 
-    // Open modal with video
+    console.log('Video modal ready. Found', videoTriggers.length, 'video triggers.');
+
     function openVideoModal(videoSrc) {
-        modalVideo.querySelector('source').src = videoSrc;
+        console.log('Opening video:', videoSrc);
+        
+        // CRITICAL FIX: Set src directly on the video element (not the source)
+        modalVideo.src = videoSrc;
         modalVideo.load();
+        
+        // Show the modal
         videoModal.classList.add('active');
         document.body.classList.add('modal-open');
         
-        // Auto-play the video
+        // Try to play
         modalVideo.play().catch(err => {
             console.log('Autoplay prevented:', err);
         });
     }
 
-    // Close modal
     function closeVideoModal() {
         modalVideo.pause();
         modalVideo.currentTime = 0;
-        modalVideo.querySelector('source').src = '';
+        modalVideo.removeAttribute('src'); // Remove src instead of setting to empty
+        modalVideo.load();
         videoModal.classList.remove('active');
         document.body.classList.remove('modal-open');
     }
 
-    // Add click listeners to video triggers
+    // Add click listeners
     videoTriggers.forEach(trigger => {
         trigger.addEventListener('click', function(e) {
             e.stopPropagation();
+            e.preventDefault();
             const videoSrc = this.getAttribute('data-video');
+            console.log('Ticker item clicked. Video src:', videoSrc);
+            
             if (videoSrc) {
                 openVideoModal(videoSrc);
+            } else {
+                console.warn('No data-video attribute found');
             }
         });
     });
 
-    // Close on overlay click
     if (modalOverlay) {
         modalOverlay.addEventListener('click', closeVideoModal);
     }
 
-    // Close on X button
     if (modalClose) {
         modalClose.addEventListener('click', closeVideoModal);
     }
 
-    // Close on ESC key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && videoModal.classList.contains('active')) {
             closeVideoModal();
