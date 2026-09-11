@@ -526,6 +526,70 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
     // ============================================
+// VIDEO MODAL - PLAY LOCAL VIDEOS ON CLICK
+// ============================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const videoModal = document.getElementById('video-modal');
+    const modalVideo = document.getElementById('modal-video');
+    const modalOverlay = videoModal?.querySelector('.video-modal-overlay');
+    const modalClose = videoModal?.querySelector('.video-modal-close');
+    const videoTriggers = document.querySelectorAll('.video-trigger');
+
+    if (!videoModal || !modalVideo) return;
+
+    // Open modal with video
+    function openVideoModal(videoSrc) {
+        modalVideo.querySelector('source').src = videoSrc;
+        modalVideo.load();
+        videoModal.classList.add('active');
+        document.body.classList.add('modal-open');
+        
+        // Auto-play the video
+        modalVideo.play().catch(err => {
+            console.log('Autoplay prevented:', err);
+        });
+    }
+
+    // Close modal
+    function closeVideoModal() {
+        modalVideo.pause();
+        modalVideo.currentTime = 0;
+        modalVideo.querySelector('source').src = '';
+        videoModal.classList.remove('active');
+        document.body.classList.remove('modal-open');
+    }
+
+    // Add click listeners to video triggers
+    videoTriggers.forEach(trigger => {
+        trigger.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const videoSrc = this.getAttribute('data-video');
+            if (videoSrc) {
+                openVideoModal(videoSrc);
+            }
+        });
+    });
+
+    // Close on overlay click
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', closeVideoModal);
+    }
+
+    // Close on X button
+    if (modalClose) {
+        modalClose.addEventListener('click', closeVideoModal);
+    }
+
+    // Close on ESC key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+            closeVideoModal();
+        }
+    });
+});
+
+    // ============================================
 // VIDEO TOOLTIP - CLICK TO OPEN
 // ============================================
 
