@@ -1635,6 +1635,64 @@ header.scrolled .logo-img {
 }
 
 /* ============================================
+   INSTAGRAM FEED PAGE
+   ============================================ */
+
+.instagram-feed-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 5% 100px;
+}
+
+.instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    align-items: start;
+}
+
+/* Wrapper for each embed */
+.instagram-embed-wrapper {
+    background: var(--color-bg-secondary);
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    /* Minimum height prevents the page from jumping while Instagram loads */
+    min-height: 450px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+/* Instagram's native iframe styling */
+.instagram-embed-wrapper iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    border-radius: 8px;
+}
+
+/* CTA Button Container */
+.instagram-cta {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .instagram-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .instagram-embed-wrapper {
+        min-height: 400px;
+        padding: 0.5rem;
+    }
+}
+
+/* ============================================
    5. WHAT WE DO PAGE
    ============================================ */
 
