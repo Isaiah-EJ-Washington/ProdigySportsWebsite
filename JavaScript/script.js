@@ -26,14 +26,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!track) return;
 
-        // Card Data
-        const athletes = [
+                const athletes = [
             {
                 name: "Isaac Terrell",
                 info: "Iowa State | Defensive End",
                 img: "images/IsaacTerell.jpg",
                 details: [
-                    { label: "Height", value: "6'2" },
+                    { label: "Height", value: "6'2\"" },
                     { label: "Weight", value: "247 lbs" },
                     { label: "School", value: "Iowa State" },
                     { label: "Class", value: "Senior" },
@@ -45,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 info: "SMU | Linebacker",
                 img: "images/athlete2.jpg",
                 details: [
-                    { label: "Height", value: "6'1" },
+                    { label: "Height", value: "6'1\"" },
                     { label: "Weight", value: "225 lbs" },
                     { label: "School", value: "SMU" },
                     { label: "Class", value: "Junior" },
@@ -57,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 info: "Iowa State | Defensive Tackle",
                 img: "images/BrysonLamb.jpg",
                 details: [
-                    { label: "Height", value: "6'2" },
+                    { label: "Height", value: "6'2\"" },
                     { label: "Weight", value: "301 lbs" },
                     { label: "School", value: "Iowa State" },
                     { label: "Class", value: "Senior" },
@@ -69,11 +68,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 info: "Kansas State | Guard",
                 img: "images/MontanaW.jpg",
                 details: [
-                    { label: "Height", value: "5'10" },
+                    { label: "Height", value: "5'10\"" },
                     { label: "Weight", value: "170 lbs" },
                     { label: "School", value: "Kansas St" },
                     { label: "Class", value: "Sophomore" },
-                    { label: "Stats", value: "6 PPG, 1.7 ASTs, 1.3 REB" }
+                    { label: "Stats", value: "6 PTs, 1.7 ASTs, 1.3 REB" }
                 ]
             },
             {
@@ -81,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 info: "Colorado St | Forward",
                 img: "images/EricFielder2.jpg",
                 details: [
-                    { label: "Height", value: "6'8" },
+                    { label: "Height", value: "6'8\"" },
                     { label: "Weight", value: "210 lbs" },
                     { label: "School", value: "Colorado State" },
                     { label: "Class", value: "Freshman" },
@@ -93,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 info: "Louisville | Defensive Tackle",
                 img: "images/athlete6.jpg",
                 details: [
-                    { label: "Height", value: "6'3" },
+                    { label: "Height", value: "6'3\"" },
                     { label: "Weight", value: "300 lbs" },
                     { label: "School", value: "Louisville" },
                     { label: "Class", value: "Junior" },
@@ -105,11 +104,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 info: "Kansas State | Center",
                 img: "images/JTRock.jpg",
                 details: [
-                    { label: "Height", value: "7'1" },
+                    { label: "Height", value: "7'1\"" },
                     { label: "Weight", value: "260 lbs" },
                     { label: "School", value: "Kansas State" },
                     { label: "Class", value: "Senior" },
-                    { label: "Stats", value: "6.2 PPG, 3.5 REBs" }
+                    { label: "Stats", value: "6.2 PTs, 3.5 REBs" }
                 ]
             },
             {
@@ -117,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 info: "Michigan | Defensive End",
                 img: "images/NateMarshall.jpg",
                 details: [
-                    { label: "Height", value: "6'3" },
+                    { label: "Height", value: "6'3\"" },
                     { label: "Weight", value: "248 lbs" },
                     { label: "School", value: "Michigan" },
                     { label: "Class", value: "Sophomore" },
@@ -129,19 +128,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 info: "North Carolina | Guard",
                 img: "images/JaydonYoung.jpg",
                 details: [
-                    { label: "Height", value: "6'4" },
+                    { label: "Height", value: "6'4\"" },
                     { label: "Weight", value: "200 lbs" },
                     { label: "School", value: "North Carolina" },
                     { label: "Class", value: "Senior" },
-                    { label: "Stats", value: "6 PPG, 1.3 REB, 1 AST" }
-        
+                    { label: "Stats", value: "6 pts, 1.3 REB, 1 AST" }
+                ]
             },
             {
                 name: "Miles Coleman",
                 info: "Oklahoma St | Wide Reciever",
                 img: "images/MilesColeman.jpg",
                 details: [
-                    { label: "Height", value: "5'6" },
+                    { label: "Height", value: "5'6\"" },
                     { label: "Weight", value: "158 lbs" },
                     { label: "School", value: "Oklahoma St" },
                     { label: "Class", value: "Junior" },
@@ -153,11 +152,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 info: "South Florida | Guard",
                 img: "images/MikeJames.jpg",
                 details: [
-                    { label: "Height", value: "6'5" },
+                    { label: "Height", value: "6'5\"" },
                     { label: "Weight", value: "205 lbs" },
                     { label: "School", value: "South Florida" },
                     { label: "Class", value: "Senior" },
-                    { label: "Stats", value: "10.3 PPG, 7.8 REB, 1.8 AST" }
+                    { label: "Stats", value: "10.3 PTs, 7.8 REB, 1.8 AST" }
                 ]
             },
             {
@@ -165,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 info: "Delaware | Linebacker",
                 img: "images/GavinMoul.png",
                 details: [
-                    { label: "Height", value: "6'0" },
+                    { label: "Height", value: "6'0\"" },
                     { label: "Weight", value: "227 lbs" },
                     { label: "School", value: "Delaware" },
                     { label: "Class", value: "Senior" },
@@ -175,9 +174,9 @@ document.addEventListener('DOMContentLoaded', function () {
             {
                 name: "Chacho Womack",
                 info: "Petersburg High School | Guard",
-                img: "images/ChachoWomack.jpg",
+                img: "images/MikeJames.jpg",
                 details: [
-                    { label: "Height", value: "6'5" },
+                    { label: "Height", value: "6'5\"" },
                     { label: "Weight", value: "180 lbs" },
                     { label: "School", value: "Petersburg HS" },
                     { label: "Class", value: "Sophomore" },
@@ -189,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 info: "Bucknell | Wide Reciever",
                 img: "images/SamMilligan.jpg",
                 details: [
-                    { label: "Height", value: "6'3" },
+                    { label: "Height", value: "6'3\"" },
                     { label: "Weight", value: "220 lbs" },
                     { label: "School", value: "Bucknell" },
                     { label: "Class", value: "Senior" },
@@ -201,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 info: "Lake Nona High School | Quarterback",
                 img: "images/ElijahNickerson.png",
                 details: [
-                    { label: "Height", value: "6'5" },
+                    { label: "Height", value: "6'5\"" },
                     { label: "Weight", value: "186 lbs" },
                     { label: "School", value: "Lake Nona HS" },
                     { label: "Class", value: "Junior" },
