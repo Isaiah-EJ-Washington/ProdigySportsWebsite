@@ -26,38 +26,41 @@
                         <span class="video-indicator">▶</span>
                         <span class="video-tooltip">Watch highlights →</span>
                     </span>  
-
-                   <span class="ticker-item" data-has-video="true">
-                        <a href=https://x.com/MemphisFB/status/2106443249452003731" target="_blank" class="player-link">
-                            <span class="player-name">Brady Kluse</span>
-                        </a>
-                        <span class="player-college">Memphis</span>
-                        <span class="divider">|</span>
-                        <span class="player-stats">2 REC, 37 YDS, 1 TD</span>
-                        <span class="video-indicator">▶</span>
-                        <span class="video-tooltip">Watch highlights →</span>
-                    </span> -->
                     <!-- Player WITHOUT highlight link -->
                     <span class="ticker-item" data-has-video="false">
-                        <span class="player-name">Miles Coleman</span>
-                        <span class="player-college">Oklahoma State</span>
+                        <span class="player-name">Sam Milligan WR</span>
+                        <span class="player-college">Bucknell</span>
                         <span class="divider">|</span>
-                        <span class="player-stats">6 REC, 95 YDS, 1 TD</span>
+                        <span class="player-stats">12 REC, 202 YDS, 2 TD</span>
                     </span>
 
                      <!-- Player WITHOUT highlight link -->
                     <span class="ticker-item" data-has-video="false">
-                        <span class="player-name">Brandon Booker</span>
-                        <span class="player-college">SMU</span>
+                        <span class="player-name">Gavin Moul LB</span>
+                        <span class="player-college">Delaware</span>
                         <span class="divider">|</span>
-                        <span class="player-stats">8 TOT</span>
+                        <span class="player-stats">13 TOT, 1 TFL</span>
                     </span>
 
                     <span class="ticker-item" data-has-video="false">
-                        <span class="player-name">Jake Strong</span>
-                        <span class="player-college">McNeese</span>
+                        <span class="player-name">Isaac Terrell DE</span>
+                        <span class="player-college">Iowa St</span>
                         <span class="divider">|</span>
-                        <span class="player-stats">20/36, 175 YDS, 5 CAR, 22 YDS</span>
+                        <span class="player-stats">8 TOT, 0.5 SCK</span>
+                    </span>
+
+                    <span class="ticker-item" data-has-video="false">
+                        <span class="player-name">Isaac Terrell DE</span>
+                        <span class="player-college">Iowa St</span>
+                        <span class="divider">|</span>
+                        <span class="player-stats">8 TOT, 0.5 SCK</span>
+                    </span>
+
+                      <span class="ticker-item" data-has-video="false">
+                        <span class="player-name">Jayden Bryant DE</span>
+                        <span class="player-college">Iowa St</span>
+                        <span class="divider">|</span>
+                        <span class="player-stats">1 TOT, 1 SCK</span>
                     </span>
 
                 </div>
@@ -101,6 +104,40 @@
         </nav>
     </header>
     <main>
+
+          <!-- ===== FEATURED ATHLETES - AUTO CAROUSEL ===== -->
+        <section class="featured-athletes">
+            <div class="section-header">
+                <span class="section-tag">ROSTER</span>
+                <h2>Featured <span class="gold-text">Athletes</span></h2>
+                <div class="section-divider"></div>
+            </div>
+
+            <div class="carousel-wrapper">
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Cards will be inserted by JavaScript -->
+                </div>
+            </div>
+
+            <div class="carousel-nav">
+                <button class="carousel-btn prev-btn" id="prevBtn" aria-label="Previous">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6" />
+                    </svg>
+                </button>
+                <button class="carousel-btn pause-btn" id="pauseBtn" aria-label="Pause auto-play">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <rect x="6" y="4" width="4" height="16" />
+                        <rect x="14" y="4" width="4" height="16" />
+                    </svg>
+                </button>
+                <button class="carousel-btn next-btn" id="nextBtn" aria-label="Next">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                </button>
+            </div>
+        </section>
 
         <!-- ===== HERO SECTION ===== -->
         <section class="hero-left">
@@ -168,41 +205,6 @@
             </div>
         </section>
         
-
-        <!-- ===== FEATURED ATHLETES - AUTO CAROUSEL ===== -->
-        <section class="featured-athletes">
-            <div class="section-header">
-                <span class="section-tag">ROSTER</span>
-                <h2>Featured <span class="gold-text">Athletes</span></h2>
-                <div class="section-divider"></div>
-            </div>
-
-            <div class="carousel-wrapper">
-                <div class="carousel-track" id="carouselTrack">
-                    <!-- Cards will be inserted by JavaScript -->
-                </div>
-            </div>
-
-            <div class="carousel-nav">
-                <button class="carousel-btn prev-btn" id="prevBtn" aria-label="Previous">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="15 18 9 12 15 6" />
-                    </svg>
-                </button>
-                <button class="carousel-btn pause-btn" id="pauseBtn" aria-label="Pause auto-play">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <rect x="6" y="4" width="4" height="16" />
-                        <rect x="14" y="4" width="4" height="16" />
-                    </svg>
-                </button>
-                <button class="carousel-btn next-btn" id="nextBtn" aria-label="Next">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="9 18 15 12 9 6" />
-                    </svg>
-                </button>
-            </div>
-        </section>
-
         <!-- ===== IMAGE-LED SECTION ===== -->
         <section class="image-led-hero">
             <div class="image-led-bg">
