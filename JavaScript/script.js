@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
             card._flipHandler = handler;
             card.addEventListener('click', handler);
         });
-        console.log('Flip cards initialized. Found:', document.querySelectorAll('.flip-card').length);
     }
 
     // ============================================
@@ -70,21 +69,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 info: "Kansas State | Guard",
                 img: "images/MontanaW.jpg",
                 details: [
-                    { label: "Height", value: "5'10"" },
+                    { label: "Height", value: "5'10\"" },
                     { label: "Weight", value: "170 lbs" },
                     { label: "School", value: "Kansas St" },
                     { label: "Class", value: "Sophomore" },
-                    { label: "Stats", value: "6 PTs, 1.7 ASTs, 1.3 REB" } 
-            },            
-            {   
+                    { label: "Stats", value: "6 PTs, 1.7 ASTs, 1.3 REB" }
+                ]
+            },
+            {
                 name: "Eric Fiedler",
                 info: "Colorado St | Forward",
                 img: "images/EricFielder2.jpg",
                 details: [
-                    { label: "Height", value: "6'8"" },
+                    { label: "Height", value: "6'8\"" },
                     { label: "Weight", value: "210 lbs" },
                     { label: "School", value: "Colorado State" },
-                    { label: "Class", value: " Freshman" },
+                    { label: "Class", value: "Freshman" },
                     { label: "Stats", value: "N/A" }
                 ]
             },
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 info: "Louisville | Defensive Tackle",
                 img: "images/athlete6.jpg",
                 details: [
-                    { label: "Height", value: "6'3" },
+                    { label: "Height", value: "6'3\"" },
                     { label: "Weight", value: "300 lbs" },
                     { label: "School", value: "Louisville" },
                     { label: "Class", value: "Junior" },
@@ -105,109 +105,109 @@ document.addEventListener('DOMContentLoaded', function () {
                 info: "Kansas State | Center",
                 img: "images/JTRock.jpg",
                 details: [
-                    { label: "Height", value: "7'1" },
+                    { label: "Height", value: "7'1\"" },
                     { label: "Weight", value: "260 lbs" },
                     { label: "School", value: "Kansas State" },
                     { label: "Class", value: "Senior" },
                     { label: "Stats", value: "6.2 PTs, 3.5 REBs" }
                 ]
             },
-                     {
+            {
                 name: "Nate Marshall",
                 info: "Michigan | Defensive End",
                 img: "images/NateMarshall.jpg",
                 details: [
-                    { label: "Height", value: "6'3" },
+                    { label: "Height", value: "6'3\"" },
                     { label: "Weight", value: "248 lbs" },
                     { label: "School", value: "Michigan" },
                     { label: "Class", value: "Sophomore" },
                     { label: "Stats", value: "11 tackles, 2 sacks, 1 TFL" }
                 ]
             },
-                  {
+            {
                 name: "Jaydon Young",
                 info: "North Carolina | Guard",
                 img: "images/JaydonYoung.jpg",
                 details: [
-                    { label: "Height", value: "6'4" },
+                    { label: "Height", value: "6'4\"" },
                     { label: "Weight", value: "200 lbs" },
                     { label: "School", value: "North Carolina" },
                     { label: "Class", value: "Senior" },
                     { label: "Stats", value: "6 pts, 1.3 REB, 1 AST" }
                 ]
             },
-                      {
+            {
                 name: "Miles Coleman",
                 info: "Oklahoma St | Wide Reciever",
                 img: "images/MilesColeman.jpg",
                 details: [
-                    { label: "Height", value: "5'6" },
+                    { label: "Height", value: "5'6\"" },
                     { label: "Weight", value: "158 lbs" },
                     { label: "School", value: "Oklahoma St" },
                     { label: "Class", value: "Junior" },
                     { label: "Stats", value: "36 REC, 486 YDs, 3 TD" }
                 ]
             },
-                      {
+            {
                 name: "Mike James",
                 info: "South Florida | Guard",
                 img: "images/MikeJames.jpg",
                 details: [
-                    { label: "Height", value: "6'5" },
+                    { label: "Height", value: "6'5\"" },
                     { label: "Weight", value: "205 lbs" },
                     { label: "School", value: "South Florida" },
                     { label: "Class", value: "Senior" },
                     { label: "Stats", value: "10.3 PTs, 7.8 REB, 1.8 AST" }
                 ]
             },
-                     {
+            {
                 name: "Gavin Moul",
                 info: "Delaware | Linebacker",
                 img: "images/GavinMoul.png",
                 details: [
-                    { label: "Height", value: "6'0" },
+                    { label: "Height", value: "6'0\"" },
                     { label: "Weight", value: "227 lbs" },
                     { label: "School", value: "Delaware" },
                     { label: "Class", value: "Senior" },
                     { label: "Stats", value: "72 tackles, 1 sack, 1 FF, 5 TFLs" }
                 ]
             },
-                     {
+            {
                 name: "Chacho Womack",
                 info: "Petersburg High School | Guard",
-                img: "images/ChachoWomack.jpg",
+                img: "images/MikeJames.jpg",
                 details: [
-                    { label: "Height", value: "6'5" },
+                    { label: "Height", value: "6'5\"" },
                     { label: "Weight", value: "180 lbs" },
                     { label: "School", value: "Petersburg HS" },
                     { label: "Class", value: "Sophomore" },
                     { label: "Stats", value: "N/A" }
                 ]
             },
-                    {
+            {
                 name: "Sam Milligan",
                 info: "Bucknell | Wide Reciever",
                 img: "images/SamMilligan.jpg",
                 details: [
-                    { label: "Height", value: "6'3" },
+                    { label: "Height", value: "6'3\"" },
                     { label: "Weight", value: "220 lbs" },
                     { label: "School", value: "Bucknell" },
                     { label: "Class", value: "Senior" },
                     { label: "Stats", value: "65 REC, 769 YDs, 6 TD" }
                 ]
             },
-                          {
+            {
                 name: "Elijah Nickerson",
                 info: "Lake Nona High School | Quarterback",
                 img: "images/ElijahNickerson.png",
                 details: [
-                    { label: "Height", value: "6'5" },
+                    { label: "Height", value: "6'5\"" },
                     { label: "Weight", value: "186 lbs" },
                     { label: "School", value: "Lake Nona HS" },
                     { label: "Class", value: "Junior" },
                     { label: "Stats", value: "N/A" }
                 ]
-            },
+            }
         ];
 
         // Build Cards (SINGLE definition)
@@ -522,8 +522,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     document.body.style.overflow = '';
                 }
             });
-        } else {
-            console.log('Menu elements not found - check your HTML');
         }
     }
 
@@ -572,7 +570,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-        // ============================================
+    // ============================================
     // 10. VIDEO MODAL
     // ============================================
     function initVideoModal() {
@@ -589,8 +587,8 @@ document.addEventListener('DOMContentLoaded', function () {
             modalVideo.load();
             videoModal.classList.add('active');
             document.body.classList.add('modal-open');
-            modalVideo.play().catch(err => console.log('Autoplay prevented:', err))
-            }
+            modalVideo.play().catch(err => console.log('Autoplay prevented:', err));
+        }
 
         function closeVideoModal() {
             modalVideo.pause();
@@ -610,7 +608,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     openVideoModal(videoSrc);
                 }
             });
-         });
+        });
 
         if (modalOverlay) modalOverlay.addEventListener('click', closeVideoModal);
         if (modalClose) modalClose.addEventListener('click', closeVideoModal);
@@ -621,8 +619,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
     // ============================================
-    // 10. INIT ALL
+    // 11. INIT ALL
     // ============================================
     initFlipCards();
     initCarousel();
@@ -633,6 +632,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initMobileMenu();
     initSmoothScroll();
     initScrollReveal();
+    initVideoModal(); // Cleaned up into one function
 
     console.log('Prodigy Sports Group - Site loaded successfully');
 });
