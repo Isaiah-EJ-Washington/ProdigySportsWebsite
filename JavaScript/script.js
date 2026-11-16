@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
             {
                 name: "Chacho Womack",
                 info: "Petersburg High School | Guard",
-                img: "images/MikeJames.jpg",
+                img: "images/ChachoWomack.jpg",
                 details: [
                     { label: "Height", value: "6'5\"" },
                     { label: "Weight", value: "180 lbs" },
