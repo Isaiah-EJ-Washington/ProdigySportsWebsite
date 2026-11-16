@@ -70,18 +70,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 info: "Kansas State | Guard",
                 img: "images/MontanaW.jpg",
                 details: [
-                    { label: "Height", value: "5'10\"" },
+                    { label: "Height", value: "5'10"" },
                     { label: "Weight", value: "170 lbs" },
                     { label: "School", value: "Kansas St" },
                     { label: "Class", value: "Sophomore" },
-                    { label: "Stats", value: "6 PTs, 1.7 ASTs, 1.3 REB]
+                    { label: "Stats", value: "6 PTs, 1.7 ASTs, 1.3 REB" } 
             },            
             {   
                 name: "Eric Fiedler",
                 info: "Colorado St | Forward",
                 img: "images/EricFielder2.jpg",
                 details: [
-                    { label: "Height", value: "6'8\"" },
+                    { label: "Height", value: "6'8"" },
                     { label: "Weight", value: "210 lbs" },
                     { label: "School", value: "Colorado State" },
                     { label: "Class", value: " Freshman" },
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
                      {
                 name: "Chacho Womack",
                 info: "Petersburg High School | Guard",
-                img: "images/MikeJames.jpg",
+                img: "images/ChachoWomack.jpg",
                 details: [
                     { label: "Height", value: "6'5" },
                     { label: "Weight", value: "180 lbs" },
@@ -572,100 +572,55 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-
+        // ============================================
+    // 10. VIDEO MODAL
     // ============================================
-// VIDEO MODAL - WORKING VERSION
-// ============================================
+    function initVideoModal() {
+        const videoModal = document.getElementById('video-modal');
+        const modalVideo = document.getElementById('modal-video');
+        const modalOverlay = videoModal ? videoModal.querySelector('.video-modal-overlay') : null;
+        const modalClose = videoModal ? videoModal.querySelector('.video-modal-close') : null;
+        const videoTriggers = document.querySelectorAll('.video-trigger');
 
-document.addEventListener('DOMContentLoaded', function() {
-    const videoModal = document.getElementById('video-modal');
-    const modalVideo = document.getElementById('modal-video');
-    const modalOverlay = videoModal ? videoModal.querySelector('.video-modal-overlay') : null;
-    const modalClose = videoModal ? videoModal.querySelector('.video-modal-close') : null;
-    const videoTriggers = document.querySelectorAll('.video-trigger');
+        if (!videoModal || !modalVideo) return;
 
-    if (!videoModal || !modalVideo) {
-        console.warn('Video modal or video element not found');
-        return;
-    }
-
-    console.log('Video modal ready. Found', videoTriggers.length, 'video triggers.');
-
-    function openVideoModal(videoSrc) {
-        console.log('Opening video:', videoSrc);
-        
-        // CRITICAL FIX: Set src directly on the video element (not the source)
-        modalVideo.src = videoSrc;
-        modalVideo.load();
-        
-        // Show the modal
-        videoModal.classList.add('active');
-        document.body.classList.add('modal-open');
-        
-        // Try to play
-        modalVideo.play().catch(err => {
-            console.log('Autoplay prevented:', err);
-        });
-    }
-
-    function closeVideoModal() {
-        modalVideo.pause();
-        modalVideo.currentTime = 0;
-        modalVideo.removeAttribute('src'); // Remove src instead of setting to empty
-        modalVideo.load();
-        videoModal.classList.remove('active');
-        document.body.classList.remove('modal-open');
-    }
-
-    // Add click listeners
-    videoTriggers.forEach(trigger => {
-        trigger.addEventListener('click', function(e) {
-            e.stopPropagation();
-            e.preventDefault();
-            const videoSrc = this.getAttribute('data-video');
-            console.log('Ticker item clicked. Video src:', videoSrc);
-            
-            if (videoSrc) {
-                openVideoModal(videoSrc);
-            } else {
-                console.warn('No data-video attribute found');
+        function openVideoModal(videoSrc) {
+            modalVideo.src = videoSrc;
+            modalVideo.load();
+            videoModal.classList.add('active');
+            document.body.classList.add('modal-open');
+            modalVideo.play().catch(err => console.log('Autoplay prevented:', err))
             }
-        });
-    });
 
-    if (modalOverlay) {
-        modalOverlay.addEventListener('click', closeVideoModal);
-    }
-
-    if (modalClose) {
-        modalClose.addEventListener('click', closeVideoModal);
-    }
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && videoModal.classList.contains('active')) {
-            closeVideoModal();
+        function closeVideoModal() {
+            modalVideo.pause();
+            modalVideo.currentTime = 0;
+            modalVideo.removeAttribute('src');
+            modalVideo.load();
+            videoModal.classList.remove('active');
+            document.body.classList.remove('modal-open');
         }
-    });
-});
 
-    // ============================================
-// VIDEO TOOLTIP - CLICK TO OPEN
-// ============================================
+        videoTriggers.forEach(trigger => {
+            trigger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                const videoSrc = this.getAttribute('data-video');
+                if (videoSrc) {
+                    openVideoModal(videoSrc);
+                }
+            });
+         });
 
-document.addEventListener('DOMContentLoaded', function() {
-    const videoTriggers = document.querySelectorAll('.video-trigger');
-    
-    videoTriggers.forEach(trigger => {
-        trigger.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const videoUrl = this.getAttribute('data-video');
-            if (videoUrl && videoUrl !== '') {
-                window.open(videoUrl, '_blank');
+        if (modalOverlay) modalOverlay.addEventListener('click', closeVideoModal);
+        if (modalClose) modalClose.addEventListener('click', closeVideoModal);
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+                closeVideoModal();
             }
         });
-    });
-});
-
+    }
     // ============================================
     // 10. INIT ALL
     // ============================================
