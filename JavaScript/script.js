@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     { label: "Weight", value: "186 lbs" },
                     { label: "School", value: "Lake Nona HS" },
                     { label: "Class", value: "Junior" },
-                    { label: "Stats", value: "N/A" }
+                    { label: "Stats", value: "133/187, 2320 YDS, 21 TD, 330 RUSH YDs, 9 rush TDs" }
                 ]
             }
         ];
