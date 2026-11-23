@@ -15,32 +15,75 @@ document.addEventListener('DOMContentLoaded', function () {
             card.addEventListener('click', handler);
         });
     }
+ // ============================================
+//   2. HERO SLIDESHOW 
+// ============================================
+function initHeroSlideshow() {
+    const slides = document.querySelectorAll('.hero-slide');
+    const prevBtn = document.getElementById('heroPrev');
+    const nextBtn = document.getElementById('heroNext');
+    
+    if (slides.length <= 1) return; 
 
-    // ============================================
-    // 2. HERO SLIDESHOW
-    // ============================================
-    function initHeroSlideshow() {
-        const slides = document.querySelectorAll('.hero-slide');
-        if (slides.length <= 1) return; 
+    let currentSlide = 0;
+    let autoPlayInterval = null;
+    const slideDuration = 7000; 
 
-        let currentSlide = 0;
-        const slideDuration = 7000; 
+    function goToSlide(index) {
+       
+        const oldVideo = slides[currentSlide].querySelector('video');
+        if (oldVideo) oldVideo.pause();
 
-        setInterval(() => {
-            const oldVideo = slides[currentSlide].querySelector('video');
-            if (oldVideo) oldVideo.pause();
+        slides[currentSlide].classList.remove('active');
+        
+        currentSlide = (index + slides.length) % slides.length;
+        
+        slides[currentSlide].classList.add('active');
 
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-
-            const newVideo = slides[currentSlide].querySelector('video');
-            if (newVideo) {
-                newVideo.currentTime = 0; 
-                newVideo.play().catch(e => console.log('Autoplay prevented:', e));
-            }
-        }, slideDuration);
+        const newVideo = slides[currentSlide].querySelector('video');
+        if (newVideo) {
+            newVideo.currentTime = 0; 
+            newVideo.play().catch(e => console.log('Autoplay prevented:', e));
+        }
     }
+
+    function nextSlide() {
+        goToSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+        goToSlide(currentSlide - 1);
+    }
+
+    function startAutoPlay() {
+        if (autoPlayInterval) clearInterval(autoPlayInterval);
+        autoPlayInterval = setInterval(nextSlide, slideDuration);
+    }
+
+    function resetAutoPlay() {
+        // Clears the timer and starts it over so it doesn't skip immediately
+        clearInterval(autoPlayInterval);
+        startAutoPlay();
+    }
+
+    // --- Event Listeners ---
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            resetAutoPlay();
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            resetAutoPlay();
+        });
+    }
+
+    // --- Init ---
+    startAutoPlay();
+}
 
     // ============================================
     // 3. CAROUSEL - SMOOTHER & FASTER
