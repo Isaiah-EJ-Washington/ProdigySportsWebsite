@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('.flip-card').forEach(card => {
             card.removeEventListener('click', card._flipHandler);
             const handler = function (e) {
+                // Prevent flipping if clicking a link or button inside the card
                 if (e.target.closest('a, button')) return;
                 this.classList.toggle('flipped');
             };
@@ -16,7 +17,33 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ============================================
-    // 2. CAROUSEL - SMOOTHER & FASTER
+    // 2. HERO SLIDESHOW
+    // ============================================
+    function initHeroSlideshow() {
+        const slides = document.querySelectorAll('.hero-slide');
+        if (slides.length <= 1) return; 
+
+        let currentSlide = 0;
+        const slideDuration = 7000; 
+
+        setInterval(() => {
+            const oldVideo = slides[currentSlide].querySelector('video');
+            if (oldVideo) oldVideo.pause();
+
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+
+            const newVideo = slides[currentSlide].querySelector('video');
+            if (newVideo) {
+                newVideo.currentTime = 0; 
+                newVideo.play().catch(e => console.log('Autoplay prevented:', e));
+            }
+        }, slideDuration);
+    }
+
+    // ============================================
+    // 3. CAROUSEL - SMOOTHER & FASTER
     // ============================================
     function initCarousel() {
         const track = document.getElementById('carouselTrack');
@@ -26,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!track) return;
 
-                const athletes = [
+        const athletes = [
             {
                 name: "Isaac Terrell",
                 info: "Iowa State | Defensive End",
@@ -209,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         ];
 
-        // Build Cards (SINGLE definition)
+        // Build Cards
         function buildCard(athlete) {
             return `
                 <div class="flip-card">
@@ -248,10 +275,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const cardsHTML = athletes.map(a => buildCard(a)).join('');
         track.innerHTML = cardsHTML + cardsHTML;
 
-        // Initialize flip cards after they are created
         initFlipCards();
 
-        // --- Carousel State ---
         let currentIndex = 0;
         let autoPlayInterval = null;
         let isPaused = false;
@@ -261,7 +286,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const transitionDuration = 400;
         const autoPlayDelay = 2800;
 
-        // --- Move to a specific index ---
         function goTo(index, animate = true) {
             if (isTransitioning) return;
             isTransitioning = true;
@@ -286,7 +310,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // --- Next/Previous ---
         function next() {
             if (isTransitioning) return;
             currentIndex++;
@@ -315,7 +338,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // --- Auto-Play ---
         function startAutoPlay() {
             if (autoPlayInterval) clearInterval(autoPlayInterval);
             autoPlayInterval = setInterval(() => {
@@ -338,19 +360,16 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // --- Event Listeners ---
         if (nextBtn) nextBtn.addEventListener('click', next);
         if (prevBtn) prevBtn.addEventListener('click', prev);
         if (pauseBtn) pauseBtn.addEventListener('click', togglePause);
 
-        // Keyboard support
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
             if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
             if (e.key === ' ') { e.preventDefault(); togglePause(); }
         });
 
-        // --- Resize handling ---
         let resizeTimeout;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
@@ -359,13 +378,12 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 300);
         });
 
-        // --- Init ---
         goTo(0, false);
         startAutoPlay();
     }
 
     // ============================================
-    // 3. HORIZONTAL SCROLL (if using old grid)
+    // 4. HORIZONTAL SCROLL (if using old grid)
     // ============================================
     function initHorizontalScroll() {
         const scrollContainer = document.querySelector('.athletes-grid');
@@ -398,7 +416,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ============================================
-    // 4. ACCORDION (Process Page)
+    // 5. ACCORDION (Process Page)
     // ============================================
     function initAccordion() {
         const accordionItems = document.querySelectorAll('.accordion-item');
@@ -418,7 +436,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ============================================
-    // 5. COUNT UP ANIMATION FOR STATS
+    // 6. COUNT UP ANIMATION FOR STATS
     // ============================================
     function initCountUp() {
         const statNumbers = document.querySelectorAll('.stat-number');
@@ -465,7 +483,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ============================================
-    // 6. HEADER SCROLL EFFECT
+    // 7. HEADER SCROLL EFFECT
     // ============================================
     function initHeaderScroll() {
         const header = document.querySelector('header');
@@ -481,7 +499,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ============================================
-    // 7. MOBILE MENU TOGGLE
+    // 8. MOBILE MENU TOGGLE
     // ============================================
     function initMobileMenu() {
         const menuToggle = document.querySelector('.menu-toggle');
@@ -525,7 +543,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ============================================
-    // 8. SMOOTH SCROLL FOR ANCHOR LINKS
+    // 9. SMOOTH SCROLL FOR ANCHOR LINKS
     // ============================================
     function initSmoothScroll() {
         const anchorLinks = document.querySelectorAll('a[href^="#"]');
@@ -547,7 +565,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ============================================
-    // 9. SCROLL REVEAL ANIMATIONS
+    // 10. SCROLL REVEAL ANIMATIONS
     // ============================================
     function initScrollReveal() {
         const revealElements = document.querySelectorAll('.service-section, .team-card, .accordion-item, .stat');
@@ -570,7 +588,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ============================================
-    // 10. VIDEO MODAL
+    // 11. VIDEO MODAL
     // ============================================
     function initVideoModal() {
         const videoModal = document.getElementById('video-modal');
@@ -620,7 +638,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ============================================
-    // 11. INIT ALL
+    // 12. INIT ALL
     // ============================================
     initFlipCards();
     initCarousel();
@@ -631,7 +649,8 @@ document.addEventListener('DOMContentLoaded', function () {
     initMobileMenu();
     initSmoothScroll();
     initScrollReveal();
-    initVideoModal(); // Cleaned up into one function
+    initVideoModal(); 
+    initHeroSlideshow();
 
     console.log('Prodigy Sports Group - Site loaded successfully');
 });
